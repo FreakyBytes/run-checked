@@ -16,7 +16,7 @@ stages:
 
 
 build-wheel:
-  extends: python-setup
+  extends: .python-setup
   stage: build
   script:
     - python setup.py sdist bdist_wheel
@@ -30,7 +30,7 @@ build-wheel:
     - /^v-.*%/
 
 release-pypi:
-  extends: python-setup
+  extends: .python-setup
   stage: release
   script:
     - twine upload --repository-url $PYPI_REPO -u "__token__" -p $PYPI_API_TOKEN dist/*
