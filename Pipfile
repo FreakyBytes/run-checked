@@ -6,6 +6,11 @@ verify_ssl = true
 [dev-packages]
 mypy = "*"
 black = "==19.10b0"
+jedi = "*"
+rope = "*"
+setuptools = "*"
+wheel = "*"
+twine = "*"
 
 [packages]
 

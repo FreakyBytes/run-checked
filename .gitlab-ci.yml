@@ -1,0 +1,41 @@
+stages:
+  - build
+  - release
+
+.python-setup:
+  image: python3.7
+  cache:
+    key: python-build
+    paths:
+      - $HOME/.cache/pip
+      - $HOME/.virtualenvs
+  before_script:
+    - mkdir -p $HOME/.pip
+    - pip install pipenv
+    - pipenv install --system --ignore-pipfile --dev
+
+
+build-wheel:
+  extends: python-setup
+  stage: build
+  script:
+    - python setup.py sdist bdist_wheel
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - master
+    - develop
+    - tags
+    - /^v-.*%/
+
+release-pypi:
+  extends: python-setup
+  stage: release
+  script:
+    - twine upload --repository-url $PYPI_REPO -u "__token__" -p $PYPI_API_TOKEN dist/*
+  only:
+    - tags
+    - /^v-.*%/
+  except:
+    - branches

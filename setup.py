@@ -21,8 +21,9 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3 :: Only",
-        "Environment :: Console",
         "Intended Audience :: System Administrators",
         "Topic :: Utilities",
+        "License :: OSI Approved :: MIT License",
     ],
+    python_requires=">=3.6"
 )
