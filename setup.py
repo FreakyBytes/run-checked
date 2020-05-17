@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="runchecked",
-    version="0.1.0",
+    version="0.1.1",
     description="Python utility library to run commands in a checked fashion and report the result to Healthchecks.io",
     long_description=long_description,
     long_description_content_type="text/markdown",
