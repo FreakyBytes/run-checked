@@ -33,7 +33,7 @@ release-pypi:
   extends: .python-setup
   stage: release
   script:
-    - twine upload --repository-url $PYPI_REPO -u "__token__" -p $PYPI_API_TOKEN dist/*
+    - twine upload -u "__token__" -p "$PYPI_API_TOKEN dist/*"
   only:
     - tags
     - /^v-.*%/
